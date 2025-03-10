@@ -1,13 +1,14 @@
 from flask import Flask, jsonify
 
-# Create a Flask app instance
 app = Flask(__name__)
 
-# Define a route for the home page
 @app.route('/')
 def home():
-    return jsonify(message="Hello, Flask API!")  # Return a JSON response
+    return jsonify(message="Welcome to the Flask Docker App!")
 
-# Run the application
+@app.route('/health')
+def health():
+    return jsonify(status="Healthy")
+
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
